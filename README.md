@@ -23,9 +23,11 @@ OR
 
 Add to your Podfile:
 
-
-pod 'LAClient', :git => 'https://github.com/SourceGroove/LAClient.git', '~> 1.0.0'
-
+...
+source 'https://github.com/SourceGroove/Specs.git'
+...
+pod 'LAClient', '1.0.0'
+...
 
 # Usage
 
@@ -63,18 +65,7 @@ Class:
  you need to tell it how to desearizlize in this way.
  */
 -(void)setPhoneNumbers:(NSArray *)phoneNumbers{
-    NSMutableArray *list = [NSMutableArray array];
-    for(id obj in phoneNumbers){
-        if([obj isKindOfClass:[NSDictionary class]]){
-            [list addObject:[[PhoneNumber alloc] initWithDictionary:obj]];
-        } else if ([obj isKindOfClass:[PhoneNumber class]]){
-            [list addObject:obj];
-        } else {
-            NSLog(@"Unable to deserialize a %@ object to a PhoneNumber", [obj class]);
-        }
-    }
-    
-    _phoneNumbers = [NSArray arrayWithArray:list];
+	_phoneNumbers = [self typedArrayWithType:[PhoneNumber class] value:phoneNumberrs];
 }
 @end
 ```

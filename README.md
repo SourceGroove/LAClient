@@ -19,6 +19,14 @@ LAClient *apiClient = [[LAClient alloc] initWithURL:[NSURL URLWithString:@"https
 Add the LightAPIClient directory (and contents) to your project
 Add the Security.framework to your project
 
+OR
+
+Add to your Podfile:
+
+
+pod 'LAClient', :git => 'https://github.com/SourceGroove/LAClient.git'
+
+
 # Usage
 
 

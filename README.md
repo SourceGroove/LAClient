@@ -24,7 +24,7 @@ OR
 Add to your Podfile:
 
 
-pod 'LAClient', :git => 'https://github.com/SourceGroove/LAClient.git'
+pod 'LAClient', :git => 'https://github.com/SourceGroove/LAClient.git', '~> 1.0.0'
 
 
 # Usage

@@ -824,6 +824,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/LAClient/LAClient.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sourcegroove.LAClient;
 				PRODUCT_NAME = LAClient;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -853,6 +854,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/LAClient/LAClient.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sourcegroove.LAClient;
 				PRODUCT_NAME = LAClient;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;

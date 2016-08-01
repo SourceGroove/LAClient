@@ -1,9 +1,9 @@
 //
 //  LocactionServiceFacade.m
-//  LAClient
+//  LightAPIClient
 //
-//  Created by Seth Jordan on 5/13/14.
-//  Copyright (c) 2014. All rights reserved.
+//  Created by Seth Jordan on 7/10/13.
+//  Copyright (c) 2013 SourceGroove. All rights reserved.
 //
 
 #import "LALocationServiceFacade.h"

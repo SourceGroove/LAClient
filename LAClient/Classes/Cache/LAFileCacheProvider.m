@@ -1,9 +1,9 @@
 //
 //  LAFileCacheBase.m
-//  Directory
+//  LightAPIClient
 //
-//  Created by Seth Jordan on 6/6/14.
-//  Copyright (c) 2014 SourceGroove. All rights reserved.
+//  Created by Seth Jordan on 7/10/13.
+//  Copyright (c) 2013 SourceGroove. All rights reserved.
 //
 
 #import "LAFileCacheProvider.h"

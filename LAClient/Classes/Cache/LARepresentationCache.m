@@ -1,9 +1,9 @@
 //
 //  LARepresentationCache.m
-//  Huddle
+//  LightAPIClient
 //
-//  Created by Seth Jordan on 7/27/16.
-//  Copyright © 2016 Booz Allen Hamilton. All rights reserved.
+//  Created by Seth Jordan on 7/10/13.
+//  Copyright (c) 2013 SourceGroove. All rights reserved.
 //
 
 #import "LARepresentationCache.h"

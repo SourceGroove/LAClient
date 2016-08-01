@@ -1,5 +1,5 @@
 //
-//  LAResource.h
+//  LARepresentation.h
 //  LightApiClient
 //
 //  Created by Seth Jordan on 6/13/13.

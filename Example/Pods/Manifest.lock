@@ -1,0 +1,16 @@
+PODS:
+  - LAClient (0.1.0)
+
+DEPENDENCIES:
+  - LAClient (from `../`)
+
+EXTERNAL SOURCES:
+  LAClient:
+    :path: ../
+
+SPEC CHECKSUMS:
+  LAClient: a4396e1bb5aaf3696ad9474205afe454fad65105
+
+PODFILE CHECKSUM: 0b604374aa175d49df8318032de4fd3f8b3ff3b3
+
+COCOAPODS: 1.0.1

@@ -1,0 +1,22 @@
+{
+  "name": "LAClient",
+  "version": "0.1.0",
+  "summary": "A short description of LAClient.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/LAClient",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Seth Jordan": "jordan_seth@bah.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/LAClient.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "LAClient/Classes/**/*"
+}

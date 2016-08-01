@@ -23,11 +23,9 @@ OR
 
 Add to your Podfile:
 
-...
-source 'https://github.com/SourceGroove/Specs.git'
-...
+source 'https://github.com/SourceGroove/Specs.git'\
 pod 'LAClient', '1.0.0'
-...
+
 
 # Usage
 

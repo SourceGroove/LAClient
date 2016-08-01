@@ -66,6 +66,20 @@ Class:
 -(void)setPhoneNumbers:(NSArray *)phoneNumbers{
 	_phoneNumbers = [self typedArrayWithType:[PhoneNumber class] value:phoneNumberrs];
 }
+
+/*
+	If you need to customize the serialization of date formats to suite your api,
+	you can have your representation implement a dateformmatter to be used
+	by the client
+*/
+-(NSDateFormatter*)dateformatter{
+    if(_dateformatter == nil){
+        _dateformatter =  [[NSDateFormatter alloc] init];
+        _dateformatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+        [_dateformatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+    }
+    return _dateformatter;
+}
 @end
 ```
 

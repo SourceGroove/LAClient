@@ -219,6 +219,7 @@
 		F010A7F11D4F885B0074FD46 /* LAServiceConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LAServiceConfig.m; sourceTree = "<group>"; };
 		F010A7F21D4F885B0074FD46 /* LAServiceFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LAServiceFacade.h; sourceTree = "<group>"; };
 		F010A7F31D4F885B0074FD46 /* LAServiceFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LAServiceFacade.m; sourceTree = "<group>"; };
+		F090F3091D528BC100E27C4B /* LAClient.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LAClient.podspec; sourceTree = "<group>"; };
 		F3E96C16A20A31EC0417F85E8D0A2209 /* Pods-LAClient_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LAClient_Example-dummy.m"; sourceTree = "<group>"; };
 		F4DACF3DE90CCB68432F721872FEF7CC /* Pods_LAClient_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LAClient_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FACCDB5C7FB317C955307E5A5536C28F /* LAClient-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LAClient-umbrella.h"; sourceTree = "<group>"; };
@@ -302,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				F090F3091D528BC100E27C4B /* LAClient.podspec */,
 				E2F268CFDD113053C60677FF86E97643 /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				37A1CE3DBFFCE40FC857CB5BC688478A /* Products */,

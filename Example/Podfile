@@ -2,6 +2,7 @@ use_frameworks!
 
 
 target 'LAClient_Example' do
+  pod 'KeychainItemWrapper'
   pod 'LAClient', :path => '../'
 
   target 'LAClient_Tests' do

@@ -341,11 +341,10 @@
     [userDefaults synchronize];
 }
 -(void)saveTokenToKeychain:(LAOAuthToken*)token{
-    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:self.securityDomain
-                                                                            accessGroup:nil];
+    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:self.securityDomain accessGroup:nil];
 
     NSString *str = [[NSString alloc] initWithData:[token toData] encoding:NSUTF8StringEncoding];
-    
+    [keychainItem setObject:self.securityDomain forKey: (id)kSecAttrService];
     [keychainItem setObject:(__bridge id)kSecAttrAccessibleAlways forKey:(__bridge id)kSecAttrAccessible];
     [keychainItem setObject:token.username forKey:(__bridge NSString*)kSecAttrAccount];
     [keychainItem setObject:str forKey:(__bridge NSString*)kSecValueData];
@@ -353,6 +352,7 @@
 -(LAOAuthToken*)loadTokenFromKeychain{
     LAOAuthToken *token = nil;
     KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:self.securityDomain accessGroup:nil];
+    [keychainItem setObject:self.securityDomain forKey: (id)kSecAttrService];
     NSString *json = [keychainItem objectForKey:(__bridge NSString*)kSecValueData];
     if(json != nil && json.length > 0){
         token = [[LAOAuthToken alloc] initWithData:[json dataUsingEncoding:NSUTF8StringEncoding]];
@@ -361,6 +361,7 @@
 }
 -(void)clearTokenFromKeychain{
     KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:self.securityDomain accessGroup:nil];
+    [keychainItem setObject:self.securityDomain forKey: (id)kSecAttrService];
     [keychainItem resetKeychainItem];
 }
 

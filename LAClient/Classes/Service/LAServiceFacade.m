@@ -261,9 +261,10 @@ static int LADefaultHTTPConnectionTimeout = 60;
             NSLog(@"LAClientLoginErrorCode - requesting logout");
             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationSecuredStoreAuthenticationError object:apiError];
             
-        } else if (apiError.statusCode == 0
-                   || apiError.statusCode == 500
-                   || (apiError.statusCode == 403 && [apiError.title isEqualToString:@"Unauthorized Client"])){
+        } else if ((apiError.statusCode == 403 && [apiError.title isEqualToString:@"Unauthorized Client"])){
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationSecuredStoreApiError object:apiError];
+            
+        } else if (apiError.statusCode == 0 || apiError.statusCode == 504){
             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationSecuredStoreApiError object:apiError];
         }
     }

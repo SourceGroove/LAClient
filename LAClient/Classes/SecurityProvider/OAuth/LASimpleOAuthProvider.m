@@ -317,8 +317,11 @@
     }
 }
 -(void)clearToken{
-    [self clearTokenFromDefaults];
-    [self clearTokenFromKeychain];
+     if(self.useDefaultsForTokenStorage){
+         [self clearTokenFromDefaults];
+     } else {
+        [self clearTokenFromKeychain];
+    }
 }
 
 -(void)saveTokenToDefaults:(LAOAuthToken*)token{

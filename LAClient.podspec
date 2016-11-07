@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "LAClient"
-  s.version      = "1.0.3"
+  s.version      = "1.0.5"
   s.summary      = "A Light API Client for REST APIs"
 
   # This description is used to generate tags and improve search results.
@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/SourceGroove/LAClient.git", :tag => "1.0.1" }
+  s.source       = { :git => "https://github.com/SourceGroove/LAClient.git", :tag => s.version.to_s }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

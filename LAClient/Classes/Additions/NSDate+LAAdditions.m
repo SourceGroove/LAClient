@@ -7,12 +7,12 @@
 //
 
 #import "NSDate+LAAdditions.h"
-static NSString* UTC_FORMAT_ISO_8601 = @"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'";
-static NSString* UTC_FORMAT_BASIC = @"yyyy-MM-dd'T'HH:mm:ssZ";
-static NSString* UTC_FORMAT_FRACTIONAL_SECONDS = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+
+static NSString *UTC_FORMAT_ISO_8601 = @"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ";
+static NSString *UTC_FORMAT_ISO_8601_NO_MILLIS = @"yyyy-MM-dd'T'HH:mm:ssZ";
 //last ditch attempts when the Zulu includes :
-static NSString* UTC_FORMAT_BASIC_CUSTOMZ = @"yyyy-MM-dd'T'HH:mm:ss-mm:ss";
-static NSString* UTC_FORMAT_FRACTIONAL_CUSTOMZ = @"yyyy-MM-dd'T'HH:mm:ss.SSS-mm:ss";
+static NSString* UTC_FORMAT_ISO_8601_CUSTOMZ_1 = @"yyyy-MM-dd'T'HH:mm:ss-mm:ss";
+static NSString* UTC_FORMAT_ISO_8601_CUSTOMZ_2 = @"yyyy-MM-dd'T'HH:mm:ss.SSS-mm:ss";
 
 @implementation NSDate(LAAdditions)
 
@@ -55,45 +55,32 @@ static NSString* UTC_FORMAT_FRACTIONAL_CUSTOMZ = @"yyyy-MM-dd'T'HH:mm:ss.SSS-mm:
     double millisSinceEpoch = secondsSinceEpoch * 1000;
     return [NSNumber numberWithDouble:millisSinceEpoch];
 }
-/*
- This method is implemented opposite of what you would expect for performance against
- our internal CXF based apis.  The UTC date formats are displaying the Z offset
- with a colon between the hours and minutes.  ie.e '2013-01-16T00:05:00-05:00'
- The last : in the Z isn't represented (as best I can tell) in any NSDateFormatter
- format string.  To combat, I've added my own formats (without using Z) and
- try and parse with those first.  If this library ever opens up to a larger audience
- it would make sense to parse differently.
- */
 +(NSDate*)dateWithUTCString:(NSString *)str{
-    if(str == nil || str.length == 0){
+    if(str.length == 0){
         return nil;
     }
+    
+    NSArray *formats = @[UTC_FORMAT_ISO_8601, UTC_FORMAT_ISO_8601_NO_MILLIS, UTC_FORMAT_ISO_8601_CUSTOMZ_1, UTC_FORMAT_ISO_8601_CUSTOMZ_2];
     
     NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setLocale:locale];
-    [format setDateFormat:UTC_FORMAT_ISO_8601];
+    NSDate *d = nil;
     
-    NSDate *d = [format dateFromString:str];
-    if(d == nil){
-        [format setDateFormat:UTC_FORMAT_BASIC_CUSTOMZ];
+    for(NSString *f in formats){
+        [format setDateFormat:f];
         d = [format dateFromString:str];
+        if(d != nil){
+            return d;
+        }
     }
-    if(d == nil){
-        [format setDateFormat:UTC_FORMAT_FRACTIONAL_SECONDS];
-        d = [format dateFromString:str];
-    }
-    if(d == nil){
-        [format setDateFormat:UTC_FORMAT_BASIC];
-        d = [format dateFromString:str];
-    }
-    if(d == nil){
-        NSLog(@"Warning: unable to parse string '%@' to date using format %@, %@, %@ or %@",
-              str, UTC_FORMAT_ISO_8601,
-              UTC_FORMAT_BASIC_CUSTOMZ,
-              UTC_FORMAT_FRACTIONAL_SECONDS,
-              UTC_FORMAT_BASIC);
-    }
+    
+    NSLog(@"Warning: unable to parse string '%@' to date using format %@, %@, %@, %@ or %@",
+          str, UTC_FORMAT_ISO_8601,
+          UTC_FORMAT_ISO_8601_NO_MILLIS,
+          UTC_FORMAT_ISO_8601_CUSTOMZ_1,
+          UTC_FORMAT_ISO_8601_CUSTOMZ_2);
+    
     return d;
 }
 @end

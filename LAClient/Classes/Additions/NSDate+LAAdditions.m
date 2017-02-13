@@ -17,7 +17,15 @@ static NSString *ISO_8601_DATE_WITH_TIME_AND_MILLIS = @"yyyy-MM-dd'T'HH:mm:ss.SS
 -(NSString*)toISO8601{
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
-    [format setDateFormat:ISO_8601_DATE_WITH_TIME];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:self];
+    NSInteger hour = [components hour];
+    if (hour > 0) {
+        [format setDateFormat:ISO_8601_DATE_WITH_TIME_AND_MILLIS];
+    } else {
+        [format setDateFormat:ISO_8601_DATE];
+    }
+    
     return [format stringFromDate:self];
 }
 
@@ -32,6 +40,7 @@ static NSString *ISO_8601_DATE_WITH_TIME_AND_MILLIS = @"yyyy-MM-dd'T'HH:mm:ss.SS
     NSLog(@"I don't know how to parse %@ objects", [object class]);
     return nil;
 }
+
 
 +(NSDate*)dateWithTimeSinceEpochString:(NSString*)milliseconds{
     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
@@ -83,4 +92,5 @@ static NSString *ISO_8601_DATE_WITH_TIME_AND_MILLIS = @"yyyy-MM-dd'T'HH:mm:ss.SS
     
     return d;
 }
+
 @end

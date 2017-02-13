@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "LAClient"
-  s.version      = "1.0.6"
+  s.version      = "1.0.7"
   s.summary      = "A Light API Client for REST APIs"
 
   # This description is used to generate tags and improve search results.
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  
+
   s.description  = "Light API Client (LAClient) is a simple, light-weight client for working with REST-based APIs."
 
   s.homepage     = "https://github.com/SourceGroove"

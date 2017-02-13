@@ -17,7 +17,7 @@ static NSString *ISO_8601_DATE_WITH_TIME_AND_MILLIS = @"yyyy-MM-dd'T'HH:mm:ss.SS
 -(NSString*)toISO8601{
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
-    [format setDateFormat:UTC_FORMAT_ISO_8601];
+    [format setDateFormat:ISO_8601_DATE_WITH_TIME];
     return [format stringFromDate:self];
 }
 
@@ -58,23 +58,22 @@ static NSString *ISO_8601_DATE_WITH_TIME_AND_MILLIS = @"yyyy-MM-dd'T'HH:mm:ss.SS
         return nil;
     }
     
-    
-    
-    NSString *format = nil;
+    NSString *f = nil;
     
     if(str.length == ISO_8601_DATE.length){
-        format = ISO_8601_DATE;
+        f = ISO_8601_DATE;
         
     } else if([str containsString:@"."]){
-        format = ISO_8601_DATE_WITH_TIME_AND_MILLIS;
+        f = ISO_8601_DATE_WITH_TIME_AND_MILLIS;
         
     } else {
-        format = ISO_8601_DATE_WITH_TIME;
+        f = ISO_8601_DATE_WITH_TIME;
     }
     
     
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+    [format setDateFormat:f];
     NSDate *d = [format dateFromString:str];
     
     if(d == nil){

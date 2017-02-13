@@ -23,7 +23,7 @@ static NSString *ISO_8601_DATE_WITH_TIME_AND_MILLIS = @"yyyy-MM-dd'T'HH:mm:ss.SS
 
 +(NSDate*)dateWithObject:(id)object{
     if([object isKindOfClass:[NSString class]]){
-        return [NSDate dateWithUTCString:object];
+        return [NSDate dateWithISOString:object];
     } else if ([object isKindOfClass:[NSNumber class]]){
         NSNumber *millis = (NSNumber*)object;
         return [self dateWithTimeSinceEpoch:millis];
@@ -53,7 +53,7 @@ static NSString *ISO_8601_DATE_WITH_TIME_AND_MILLIS = @"yyyy-MM-dd'T'HH:mm:ss.SS
     double millisSinceEpoch = secondsSinceEpoch * 1000;
     return [NSNumber numberWithDouble:millisSinceEpoch];
 }
-+(NSDate*)dateWithUTCString:(NSString *)str{
++(NSDate*)dateWithISOString:(NSString *)str{
     if(str.length == 0){
         return nil;
     }

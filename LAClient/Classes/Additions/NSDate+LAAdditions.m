@@ -8,11 +8,9 @@
 
 #import "NSDate+LAAdditions.h"
 
-static NSString *UTC_FORMAT_ISO_8601 = @"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ";
-static NSString *UTC_FORMAT_ISO_8601_NO_MILLIS = @"yyyy-MM-dd'T'HH:mm:ssZ";
-//last ditch attempts when the Zulu includes :
-static NSString* UTC_FORMAT_ISO_8601_CUSTOMZ_1 = @"yyyy-MM-dd'T'HH:mm:ss-mm:ss";
-static NSString* UTC_FORMAT_ISO_8601_CUSTOMZ_2 = @"yyyy-MM-dd'T'HH:mm:ss.SSS-mm:ss";
+static NSString *ISO_8601_DATE = @"yyyy-MM-dd";
+static NSString *ISO_8601_DATE_WITH_TIME = @"yyyy-MM-dd'T'HH:mm:ssZ";
+static NSString *ISO_8601_DATE_WITH_TIME_AND_MILLIS = @"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ";
 
 @implementation NSDate(LAAdditions)
 
@@ -60,26 +58,29 @@ static NSString* UTC_FORMAT_ISO_8601_CUSTOMZ_2 = @"yyyy-MM-dd'T'HH:mm:ss.SSS-mm:
         return nil;
     }
     
-    NSArray *formats = @[UTC_FORMAT_ISO_8601, UTC_FORMAT_ISO_8601_NO_MILLIS, UTC_FORMAT_ISO_8601_CUSTOMZ_1, UTC_FORMAT_ISO_8601_CUSTOMZ_2];
     
-    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-    NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setLocale:locale];
-    NSDate *d = nil;
     
-    for(NSString *f in formats){
-        [format setDateFormat:f];
-        d = [format dateFromString:str];
-        if(d != nil){
-            return d;
-        }
+    NSString *format = nil;
+    
+    if(str.length == ISO_8601_DATE.length){
+        format = ISO_8601_DATE;
+        
+    } else if([str containsString:@"."]){
+        format = ISO_8601_DATE_WITH_TIME_AND_MILLIS;
+        
+    } else {
+        format = ISO_8601_DATE_WITH_TIME;
     }
     
-    NSLog(@"Warning: unable to parse string '%@' to date using format %@, %@, %@, %@ or %@",
-          str, UTC_FORMAT_ISO_8601,
-          UTC_FORMAT_ISO_8601_NO_MILLIS,
-          UTC_FORMAT_ISO_8601_CUSTOMZ_1,
-          UTC_FORMAT_ISO_8601_CUSTOMZ_2);
+    
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+    NSDate *d = [format dateFromString:str];
+    
+    if(d == nil){
+        NSLog(@"Warning: unable to parse string '%@' to date using format %@, %@ or %@",
+              str, ISO_8601_DATE, ISO_8601_DATE_WITH_TIME, ISO_8601_DATE_WITH_TIME_AND_MILLIS);
+    }
     
     return d;
 }

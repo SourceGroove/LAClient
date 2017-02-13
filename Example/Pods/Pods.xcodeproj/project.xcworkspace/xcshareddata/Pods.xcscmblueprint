@@ -12,7 +12,7 @@
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5A87FB36-89F9-4173-9468-E817417178ED",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "CFAD92B23384D96991C4B57603CE54EC7C9A8197" : "LAClient\/",
-    "d6a57d50-b632-cfcb-a40f-ccebd867880a++8699" : ".."
+    "d6a57d50-b632-cfcb-a40f-ccebd867880a++8699" : "..\/.."
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "Pods",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,

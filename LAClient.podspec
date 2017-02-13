@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "LAClient"
-  s.version      = "1.0.9"
+  s.version      = "1.0.10"
   s.summary      = "A Light API Client for REST APIs"
 
   # This description is used to generate tags and improve search results.

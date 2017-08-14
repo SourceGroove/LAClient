@@ -151,7 +151,7 @@
     NSParameterAssert(username);
     NSParameterAssert(password);
     
-    NSString *params = [NSString stringWithFormat:@"grant_type=password&username=%@&password=%@&client_id=%@&client_secret=%@&",
+    NSString *params = [NSString stringWithFormat:@"grant_type=password&scope=openid&username=%@&password=%@&client_id=%@&client_secret=%@&",
                         [self encodedStringFromString:username],
                         [self encodedStringFromString:password],
                         [self encodedStringFromString:self.clientId],
